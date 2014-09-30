@@ -18,6 +18,10 @@ app.use(router(app));
 
 var server = require('http').Server(app.callback());
 
+fs.readdirSync(__dirname + '/services').forEach(function (filename) {
+    require('./services/' + filename)(app);
+});
+
 // EXAMPLE: call a database
 function getMessage() {
 

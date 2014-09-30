@@ -4,12 +4,26 @@
 
 var React = require('react');
 var Link = require('react-router').Link;
+var termService = require('../services/term-service');
 
 var MyLink = require('./my-link.jsx');
 
 var Nav = React.createClass({
-
+  getInitialState: function() {
+     return {terms: []};
+  },
+  componentDidMount: function() {
+      termService.getTerms().then(function(terms) {
+          this.setState({terms: terms})
+      }.bind(this))
+  },
   render: function() {
+      var termOptions = this.state.terms.map(function(term) {
+          return (
+              <option value="{term.termName}">{term.termName}</option>
+          )
+      }.bind(this))
+
     return (
       <div id="side-nav">
         <h3><Link to="/">Kuali Co</Link></h3>
@@ -23,12 +37,10 @@ var Nav = React.createClass({
         </ul>
 
         <div className="lbl">
-          <i className="fa fa-users"></i>
-          <span> User Accounts</span>
+          <select name="selectedTerm">
+            {termOptions}
+          </select>
         </div>
-        <ul>
-          <MyLink to="/">Account</MyLink>
-        </ul>
 
         <div className="ftr">
           <Link to="/">
