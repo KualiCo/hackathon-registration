@@ -3,7 +3,7 @@ Welcome to Hack Week! :)
 ##Prereqs
 
  - Install Node 0.11.13 (I recommend you use nvm)
- - Install RethinkDB
+ - Install MongoDB
 
 ##Install it
 
