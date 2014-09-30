@@ -26,4 +26,4 @@ TermService.prototype.getTerm = function(id) {
 }
 
 // make a singleton
-module.exports = new TermService()
+module.exports = new TermService();

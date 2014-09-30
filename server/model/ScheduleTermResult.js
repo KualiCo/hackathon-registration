@@ -3,14 +3,14 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var StudentTermResultSchema = new Schema({
+var ScheduleTermResultSchema = new Schema({
     userId: String,
     termId: String,
     courses: [{
         courseId: String,
         courseCode: String,
         description: String,
-        credits: String,
+        credits: Number,
         gradingOptionId: String,
         longName: String,
         regGroupCode: String,
@@ -22,4 +22,13 @@ var StudentTermResultSchema = new Schema({
     }]
 });
 
-mongoose.model('StudentTermResult', StudentTermResultSchema);
+ScheduleTermResultSchema.methods.getRegisteredCredits = function (cb) {
+    var credits = 0;
+    this.courses.forEach(function(course) {
+        credits += course.credits;
+    });
+
+    return credits;
+};
+
+mongoose.model('ScheduleTermResult', ScheduleTermResultSchema);

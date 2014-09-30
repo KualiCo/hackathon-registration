@@ -1,8 +1,8 @@
-var $ = require('jquery')
-var Promise = require('bluebird')
+var $ = require('jquery');
+var Promise = require('bluebird');
 
 function ScheduleService() {
-    this.url = "/schedule"
+    this.url = "/studentSchedule";
     this.selectedSchedule; // Currently selected schedule
 
     this.registeredCredits = 0;
@@ -19,24 +19,15 @@ function ScheduleService() {
     this.scheduleMap = {};
 }
 
-ScheduleService.prototype.getTerms = function() {
-    return $.get(this.url)
+ScheduleService.prototype.getTermSchedule = function() {
+    return $.get(this.url + "?termId=" + termId)
         .then(function(data) {
-            this.list = data
-            return this.list
-        }.bind(this))
-}
+            this.selectedSchedule = data;
+            this.registeredCredits = data.registeredCredits;
 
-TermService.prototype.getTerm = function(id) {
-    // We can either load this from the server, or from a local cache
-    return $.ajax({
-        url: this.url+'/'+id,
-        dataType: 'json',
-        error: function(xhr, status, err) {
-            console.error(this.props.url, status, err.toString());
-        }
-    });
-}
+            return this.selectedSchedule;
+        }.bind(this))
+};
 
 // make a singleton
-module.exports = new TermService()
+module.exports = new ScheduleService();

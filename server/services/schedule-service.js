@@ -1,27 +1,13 @@
 /* jshint node:true */
 'use strict';
 
+var ScheduleTermResult = mongoose.model('ScheduleTermResult');
+
 module.exports = function (app) {
-    app.get('/studentSchedule', function*() {
-
-        this.body = [
-        {
-            "termName":"Fall 2012",
-            "termId":"kuali.atp.2012Fall",
-            "termCode":"201208"
-        },
-        {
-            "termName":"Spring 2012",
-            "termId":"kuali.atp.2012Spring",
-            "termCode":"201201"
-        }];
-    });
-
-    app.get('/terms/:id', function*() {
-        this.body = {
-            "termName":"Fall 2012",
-            "termId":"kuali.atp.2012Fall",
-            "termCode":"201208"
-        };
+    app.get('/studentSchedule', function* () {
+        ScheduleTermResult.findOne({ 'termId': this.request.query.termId }, function (err, termResult) {
+            if (err) return handleError(err);
+            this.body = termResult;
+        })
     });
 };
