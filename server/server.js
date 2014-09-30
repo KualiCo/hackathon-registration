@@ -5,6 +5,8 @@ var koa = require('koa');
 var router = require('koa-router');
 var serve = require('koa-static');
 var body = require('koa-body');
+var mongo = require('koa-mongo');
+var utils = require('./utils')
 
 // --- Koa Setup ---------------------------------------------------------------
 
@@ -14,18 +16,21 @@ app.use(serve('./client'));
 app.use(body());
 app.use(router(app));
 
-// --- Create Servers ----------------------------------------------------------
+app.use(mongo());
 
-var server = require('http').Server(app.callback());
+// source in models
+utils.getGlobbedFiles('./**/model/**/*.js').forEach(function(modelPath) {
+    require(path.resolve(modelPath));
+});
 
+// source in services
 fs.readdirSync(__dirname + '/services').forEach(function (filename) {
     require('./services/' + filename)(app);
 });
 
-// EXAMPLE: call a database
-function getMessage() {
+// --- Create Servers ----------------------------------------------------------
 
-}
+var server = require('http').Server(app.callback());
 
 server.listen(3000);
 console.log('server listening on port 3000');
