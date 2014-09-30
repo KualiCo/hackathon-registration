@@ -1,0 +1,5 @@
+node_modules
+rethinkdb_data
+npm-debug.log
+.DS_Store
+client/bundle.js
