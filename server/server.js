@@ -6,7 +6,8 @@ var router = require('koa-router');
 var serve = require('koa-static');
 var body = require('koa-body');
 var mongo = require('koa-mongo');
-var utils = require('./utils')
+var utils = require('./utils');
+var config = require('./config/env');
 
 // --- Koa Setup ---------------------------------------------------------------
 
@@ -16,7 +17,7 @@ app.use(serve('./client'));
 app.use(body());
 app.use(router(app));
 
-app.use(mongo());
+app.use(mongo({uri: config.db}));
 
 // source in models
 utils.getGlobbedFiles('./**/model/**/*.js').forEach(function(modelPath) {

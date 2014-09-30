@@ -74,6 +74,10 @@ gulp.task('watch', ['scripts'], function() {
   gulp.watch([paths.jsx, paths.js], ['copyJs'])
 });
 
+gulp.task('db', function () {
+    require('./db')();
+});
+
 function simpleError(type) {
   return function(err) {
     gutil.log(type, err.message)

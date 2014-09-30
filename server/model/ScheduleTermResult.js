@@ -24,9 +24,11 @@ var ScheduleTermResultSchema = new Schema({
 
 ScheduleTermResultSchema.methods.getRegisteredCredits = function (cb) {
     var credits = 0;
-    this.courses.forEach(function(course) {
-        credits += course.credits;
-    });
+    if (this.courses) {
+        this.courses.forEach(function (course) {
+            credits += course.credits;
+        });
+    }
 
     return credits;
 };
