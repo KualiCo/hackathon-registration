@@ -1,22 +1,19 @@
 /* jshint node:true */
-'use strict';
 
+//var Promise = require("bluebird");
 var mongoose = require('mongoose');
+//Promise.promisifyAll(mongoose);
+var config = require('../config/env');
 
 var Term = mongoose.model('Term');
 
 module.exports = function (app) {
+    var koaContext = this;
     app.get('/terms', function*() {
-        Term.find(function (err, terms) {
-            if (err) return handleError(err);
-            this.body = terms;
-        });
+        this.body = yield Term.find({}).exec();
     });
 
     app.get('/terms/:id', function*() {
-        Term.findOne({termId: this.params.id}, function (err, term) {
-            if (err) return handleError(err);
-            this.body = term;
-        });
+        this.body = yield Term.findOne({termId: this.params.id}).exec();
     });
 };

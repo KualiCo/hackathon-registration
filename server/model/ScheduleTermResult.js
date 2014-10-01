@@ -22,7 +22,7 @@ var ScheduleTermResultSchema = new Schema({
     }]
 });
 
-ScheduleTermResultSchema.methods.getRegisteredCredits = function (cb) {
+ScheduleTermResultSchema.methods.getRegisteredCredits = function () {
     var credits = 0;
     if (this.courses) {
         this.courses.forEach(function (course) {

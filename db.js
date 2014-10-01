@@ -13,6 +13,7 @@ var ScheduleTermResult = mongoose.model('ScheduleTermResult');
 
 module.exports = function () {
     mongoose.connect(config.db);
+    console.log('mongo connected to ' + config.db)
 
     insertTerms([
         {
@@ -61,6 +62,10 @@ module.exports = function () {
             "termCode": "202200"
         }
     ]);
+
+    Term.find({}, function (err, terms) {
+        console.log(terms);
+    });
 
     insertSchedules([
         {

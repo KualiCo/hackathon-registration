@@ -19,7 +19,7 @@ function ScheduleService() {
     this.scheduleMap = {};
 }
 
-ScheduleService.prototype.getTermSchedule = function() {
+ScheduleService.prototype.getTermSchedule = function(termId) {
     return $.get(this.url + "?termId=" + termId)
         .then(function(data) {
             this.selectedSchedule = data;

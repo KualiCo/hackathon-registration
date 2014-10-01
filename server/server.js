@@ -5,7 +5,7 @@ var koa = require('koa');
 var router = require('koa-router');
 var serve = require('koa-static');
 var body = require('koa-body');
-var mongo = require('koa-mongo');
+var mongoose = require('mongoose');
 var utils = require('./utils');
 var config = require('./config/env');
 var path = require('path');
@@ -18,7 +18,8 @@ app.use(serve('./client'));
 app.use(body());
 app.use(router(app));
 
-app.use(mongo({uri: config.db}));
+mongoose.connect(config.db);
+console.log('mongo connected to ' + config.db)
 
 // source in models
 utils.getGlobbedFiles('./**/model/**/*.js').forEach(function(modelPath) {

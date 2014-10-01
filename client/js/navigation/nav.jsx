@@ -18,28 +18,41 @@ var Nav = React.createClass({
             studentSchedule: null
         };
     },
+    refreshSchedule: function() {
+        console.log('refreshing schedule')
+        scheduleService.getTermSchedule(this.state.selectedTerm).then(function (schedule) {
+            console.log('new schedule: ')
+            console.log(schedule)
+            this.setState({studentSchedule: schedule})
+        }.bind(this));
+
+        this.forceUpdate()
+    },
     componentDidMount: function () {
         termService.getTerms().then(function (terms) {
             this.setState({terms: terms})
         }.bind(this));
 
-        scheduleService.getTermSchedule(this.state.selectedTerm).then(function (schedule) {
-            this.setState({studentSchedule: schedule})
-        }.bind(this));
+        this.refreshSchedule()
     },
     handleChange: function (event) {
         this.setState({selectedTerm: event.target.value});
+        this.refreshSchedule()
     },
     render: function () {
         var termOptions = this.state.terms.map(function (term) {
             return (
-                <option value="{term.termName}">{term.termName}</option>
+                <option value={term.termId}>{term.termName}</option>
             )
         }.bind(this));
 
         var registeredCredits = '';
-        if (this.state.studentSchedule && this.state.studentSchedule.registeredCredits > 0) {
-           registeredCredits = <span>{this.registeredCredits} {pluralize('credits', this.registeredCredits)}</span>
+        if (this.state.studentSchedule) {
+            console.log(this.state.studentSchedule.getRegisteredCredits())
+        }
+        if (this.state.studentSchedule && (this.state.studentSchedule.registeredCredits > 0)) {
+            console.log('here')
+           registeredCredits = <span>foo{this.state.studentSchedule.registeredCredits} {pluralize('credits', this.state.studentSchedule.registeredCredits)}</span>
         }
 
         return (

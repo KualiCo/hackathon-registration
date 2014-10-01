@@ -7,9 +7,6 @@ var ScheduleTermResult = mongoose.model('ScheduleTermResult');
 
 module.exports = function (app) {
     app.get('/studentSchedule', function* () {
-        ScheduleTermResult.findOne({ 'termId': this.request.query.termId }, function (err, termResult) {
-            if (err) return handleError(err);
-            this.body = termResult;
-        })
+        this.body = yield ScheduleTermResult.findOne({termId: this.request.query.termId}).exec();
     });
 };
