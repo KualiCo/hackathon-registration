@@ -1,26 +1,22 @@
 /* jshint node:true */
 'use strict';
 
+var mongoose = require('mongoose');
+
+var Term = mongoose.model('Term');
+
 module.exports = function (app) {
     app.get('/terms', function*() {
-        this.body = [
-        {
-            "termName":"Fall 2012",
-            "termId":"kuali.atp.2012Fall",
-            "termCode":"201208"
-        },
-        {
-            "termName":"Spring 2012",
-            "termId":"kuali.atp.2012Spring",
-            "termCode":"201201"
-        }];
+        Term.find(function (err, terms) {
+            if (err) return handleError(err);
+            this.body = terms;
+        });
     });
 
     app.get('/terms/:id', function*() {
-        this.body = {
-            "termName":"Fall 2012",
-            "termId":"kuali.atp.2012Fall",
-            "termCode":"201208"
-        };
+        Term.findOne({termId: this.params.id}, function (err, term) {
+            if (err) return handleError(err);
+            this.body = term;
+        });
     });
 };
