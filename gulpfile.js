@@ -13,6 +13,9 @@ var react = require('gulp-react');
 var runSequence = require('run-sequence');
 var changed = require('gulp-changed');
 var rename = require('gulp-rename');
+var mainBowerFiles = require('main-bower-files');
+var filter = require('gulp-filter')
+var concat = require('gulp-concat')
 
 var SRC = './client/js/'
 
@@ -73,6 +76,22 @@ gulp.task('watch', ['scripts'], function() {
 
   gulp.watch([paths.jsx, paths.js], ['copyJs'])
 });
+
+gulp.task('bower', function() {
+    var jsFilter = filter('*.js')
+    var cssFilter = filter('*.css')
+
+    return gulp.src(mainBowerFiles())
+        // JS BUNDLING
+        .pipe(jsFilter)
+        .pipe(concat('bower.js'))
+        .pipe(gulp.dest('client/js'))
+        .pipe(jsFilter.restore())
+
+        // CSS BUNDLING
+        .pipe(cssFilter)
+        .pipe(gulp.dest('client/css'))
+})
 
 gulp.task('db', function () {
     require('./db')();
