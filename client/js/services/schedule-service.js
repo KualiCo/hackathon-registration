@@ -23,7 +23,6 @@ ScheduleService.prototype.getTermSchedule = function(termId) {
     return $.get(this.url + "?termId=" + termId)
         .then(function(data) {
             this.selectedSchedule = data;
-            this.registeredCredits = data.registeredCredits;
 
             return this.selectedSchedule;
         }.bind(this))

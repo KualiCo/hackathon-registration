@@ -21,12 +21,20 @@ var Nav = React.createClass({
     refreshSchedule: function() {
         console.log('refreshing schedule')
         scheduleService.getTermSchedule(this.state.selectedTerm).then(function (schedule) {
-            console.log('new schedule: ')
-            console.log(schedule)
             this.setState({studentSchedule: schedule})
         }.bind(this));
 
         this.forceUpdate()
+    },
+    getRegisteredCredits: function() {
+        var credits = 0;
+        if (this.state.studentSchedule && this.state.studentSchedule.courses) {
+            this.state.studentSchedule.courses.forEach(function (course) {
+                credits += course.credits;
+            });
+        }
+
+        return credits;
     },
     componentDidMount: function () {
         termService.getTerms().then(function (terms) {
@@ -47,12 +55,8 @@ var Nav = React.createClass({
         }.bind(this));
 
         var registeredCredits = '';
-        if (this.state.studentSchedule) {
-            console.log(this.state.studentSchedule.getRegisteredCredits())
-        }
-        if (this.state.studentSchedule && (this.state.studentSchedule.registeredCredits > 0)) {
-            console.log('here')
-           registeredCredits = <span>foo{this.state.studentSchedule.registeredCredits} {pluralize('credits', this.state.studentSchedule.registeredCredits)}</span>
+        if (this.state.studentSchedule && (this.getRegisteredCredits() > 0)) {
+           registeredCredits = <span>{this.getRegisteredCredits()} {pluralize('credits', this.getRegisteredCredits())}</span>
         }
 
         return (
