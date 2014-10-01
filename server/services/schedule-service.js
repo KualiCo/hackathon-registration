@@ -1,6 +1,8 @@
 /* jshint node:true */
 'use strict';
 
+var mongoose = require('mongoose');
+
 var ScheduleTermResult = mongoose.model('ScheduleTermResult');
 
 module.exports = function (app) {

@@ -8,6 +8,7 @@ var body = require('koa-body');
 var mongo = require('koa-mongo');
 var utils = require('./utils');
 var config = require('./config/env');
+var path = require('path');
 
 // --- Koa Setup ---------------------------------------------------------------
 
