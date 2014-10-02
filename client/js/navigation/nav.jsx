@@ -21,6 +21,7 @@ var Nav = React.createClass({
     refreshSchedule: function() {
         console.log('refreshing schedule')
         scheduleService.getTermSchedule(this.state.selectedTerm).then(function (schedule) {
+            console.log(schedule)
             this.setState({studentSchedule: schedule})
         }.bind(this));
 
@@ -82,7 +83,7 @@ var Nav = React.createClass({
                         </li>
                     </ul>
 
-                    <ul className="left">
+                    <ul className="left credits">
                         {registeredCredits}
                     </ul>
                 </section>
