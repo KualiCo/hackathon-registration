@@ -56,42 +56,40 @@ var Nav = React.createClass({
 
         var registeredCredits = '';
         if (this.state.studentSchedule && (this.getRegisteredCredits() > 0)) {
-           registeredCredits = <span>{this.getRegisteredCredits()} {pluralize('credits', this.getRegisteredCredits())}</span>
+           registeredCredits = <li>{this.getRegisteredCredits()} {pluralize('credits', this.getRegisteredCredits())}</li>
         }
 
         return (
-            <div id="side-nav">
-                <h3>
-                    <Link to="/">Kuali Co</Link>
-                </h3>
-
-                <div className="lbl">
-                    <i className="fa fa-file-text"></i>
-                    <span> Course Registration</span>
-                </div>
-                <ul>
-                    <MyLink to="/">Course / Learning Unit</MyLink>
+            <nav className="top-bar">
+                <ul className="title-area">
+                    <li className="name">
+                        <h1><Link to="/">Kuali Co</Link></h1>
+                    </li>
+                    <li className="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
                 </ul>
 
-                <div className="lbl">
-                    <select name="selectedTerm" onChange={this.handleChange}>
-                        {termOptions}
-                    </select>
-                </div>
+                <section className="top-bar-section">
+                    <ul className="right">
+                        <li>Logoff</li>
+                    </ul>
 
-                {registeredCredits}
+                    <ul className="left">
+                        <li className="name"><h1>Course Registration</h1></li>
+                    </ul>
 
-                <div className="ftr">
-                    <Link to="/">
-                        <i className="fa fa-user"></i>
-                        <span> Profile </span>
-                    </Link>
-                    <Link to="/">
-                        <i className="fa fa-power-off"></i>
-                        <span> Logoff</span>
-                    </Link>
-                </div>
-            </div>
+                    <ul className="left">
+                        <li className="has-dropdown not-click">
+                            <select name="selectedTerm" onChange={this.handleChange}>
+                              {termOptions}
+                            </select>
+                        </li>
+                    </ul>
+
+                    <ul className="left">
+                        {registeredCredits}
+                    </ul>
+                </section>
+            </nav>
         );
     }
 

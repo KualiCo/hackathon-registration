@@ -7,7 +7,7 @@ var MyView = React.createClass({
     render: function(){
         return (
           <div>
-            <h1>MySchedule</h1>
+            <h2>MySchedule</h2>
             {this.props.activeRouteHandler({})}
           </div>
         );
