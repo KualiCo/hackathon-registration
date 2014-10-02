@@ -69,10 +69,6 @@ var Nav = React.createClass({
                 </ul>
 
                 <section className="top-bar-section">
-                    <ul className="right">
-                        <li>Logoff</li>
-                    </ul>
-
                     <ul className="left">
                         <li className="name"><h1>Course Registration</h1></li>
                     </ul>
