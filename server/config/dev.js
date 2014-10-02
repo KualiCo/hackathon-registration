@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-  db: 'mongodb://localhost/registration'
+  db: 'registration', host: 'localhost', port: "28015"
 };

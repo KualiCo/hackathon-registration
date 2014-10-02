@@ -18,7 +18,7 @@ app.use(serve('./client'));
 app.use(body());
 app.use(router(app));
 
-mongoose.connect(config.db);
+//mongoose.connect(config.db);
 console.log('mongo connected to ' + config.db)
 
 // source in models

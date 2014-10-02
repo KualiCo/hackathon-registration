@@ -45,6 +45,7 @@
     "mongoose": "~3.8.8",
     "pluralize": "^1.0.2",
     "react": "^0.11.2",
-    "react-router": "^0.7.0"
+    "react-router": "^0.7.0",
+    "rethinkdb": "^1.15.0-0"
   }
 }
