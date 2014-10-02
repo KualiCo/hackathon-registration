@@ -56,6 +56,7 @@ var Nav = React.createClass({
 
         var registeredCredits = '';
         if (this.state.studentSchedule && (this.getRegisteredCredits() > 0)) {
+            console.log('here')
            registeredCredits = <li>{this.getRegisteredCredits()} {pluralize('credits', this.getRegisteredCredits())}</li>
         }
 

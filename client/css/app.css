@@ -48,8 +48,8 @@ ul.left {
 
 .cart {
     background-color: white;
-    width: 90%;
-    height: 200px;
+    width: 325px;
+    height: 130px;
 }
 
 .cart-header {
@@ -61,10 +61,23 @@ ul.left {
     padding: 5px;
 }
 
+.cart-body {
+    padding: 5px;
+}
+
 .schedule {
     padding-left: 0.3rem;
     background-color: #f4f4f4;
     width: 90%;
     height: 600px;
     padding: 10px;
+}
+
+.label-top {
+    display: block;
+    color: #666666;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
 }
