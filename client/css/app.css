@@ -81,7 +81,9 @@ button.tiny, .button.tiny {
 }
 
 .selectedTerm {
-    margin-top: .25rem;
+    margin-top: .35rem;
+    height: 2rem;
+    padding: 0;
 }
 
 .cart-add {
