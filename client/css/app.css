@@ -52,22 +52,66 @@ ul.left {
 }
 
 .cart {
-    background-color: white;
     width: 325px;
-    height: 130px;
 }
 
 .cart-header {
     background-color: #f4f4f4;
-    height: 50px;
-    border-bottom-color: #d7d7d7;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    padding: 5px;
+    padding: 1rem;
+    display: flex;
 }
 
-.cart-body {
-    padding: 5px;
+.cart-header-title {
+    color: #333;
+    font-family: Montserrat,sans-serif;
+    font-size: 1rem;
+    line-height: 1.2;
+    float: left;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.util-grid-cell {
+    flex: 1;
+}
+
+button.tiny, .button.tiny {
+    padding: .5rem 1rem;
+    border-radius: 4px;
+}
+
+.selectedTerm {
+    margin-top: .25rem;
+}
+
+.cart-add {
+    margin: .1rem 0;
+    padding: 1rem;
+    padding-top: .75rem;
+    font-size: 1.4rem;
+    background-color: white;
+}
+
+.cart-add-contents {
+    display: flex;
+    align-items: flex-end;
+}
+
+.cart-add-course {
+    flex: 2 1 0;
+}
+
+.cart-add-section {
+    flex: 1 1 0;
+}
+
+.cart-add-button {
+    flex: 2.2 1 0;
+    text-align: right;
+}
+
+.cart-listing {
+    background-color: white;
 }
 
 .schedule {
@@ -82,7 +126,16 @@ ul.left {
     display: block;
     color: #666666;
     font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 20px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+input {
+    color: #666;
+    font-family: 'Open Sans',sans-serif;
+    font-weight: 400;
+    font-size: 0.875rem;
+    padding: .25rem;
+    text-transform: uppercase;
+    width: 90%;
 }

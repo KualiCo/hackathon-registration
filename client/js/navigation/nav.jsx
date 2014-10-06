@@ -77,7 +77,7 @@ var Nav = React.createClass({
 
                     <ul className="left">
                         <li className="has-dropdown not-click">
-                            <select name="selectedTerm" onChange={this.handleChange}>
+                            <select name="selectedTerm" className="selectedTerm" onChange={this.handleChange}>
                               {termOptions}
                             </select>
                         </li>
