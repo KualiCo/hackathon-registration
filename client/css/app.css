@@ -141,3 +141,56 @@ input {
     text-transform: uppercase;
     width: 90%;
 }
+
+.accordion .accordion-navigation, .accordion dd {
+    display: block;
+    margin-bottom: 0 !important;
+    background-color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    position: relative;
+}
+
+.accordion .accordion-navigation > a, .accordion dd > a {
+    color: #666;
+    background-color: #fff;
+    padding: .2rem;
+    font-weight: 500;
+    line-height: 1.1;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
+.accordion .accordion-navigation.active > a, .accordion dd.active > a {
+    color: #666;
+    background-color: #fff;
+    padding: .2rem;
+    font-weight: 500;
+    line-height: 1.1;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
+.accordion .accordion-navigation > a .row {
+    padding-top: .3em;
+    margin-left: .6rem;
+    margin-right: 0;
+}
+
+.accordion .accordion-navigation > a .columns {
+    padding-left: .3rem;
+    padding-right: 0.3rem;
+}
+
+.legendIndicator {
+    background-color: #3d9c89;
+    bottom: .15rem;
+    top: .15rem;
+    left: 0;
+    position: absolute;
+    width: .8rem;
+}
+
+.fi-play {
+    padding-right: .3rem;
+}
