@@ -2,12 +2,26 @@
  * @jsx React.DOM
  */
 var React = require('react');
+var $ = require('jquery');
+require('jquery-ui');
+
 
 var MyView = React.createClass({
     getInitialState: function () {
         return {
             courses: []
         };
+    },
+    componentDidMount: function () {
+        this.renderAccordion()
+    },
+    componentDidUpdate: function () {
+        this.renderAccordion()
+    },
+    renderAccordion: function() {
+        $('#cartListing').accordion({
+            collapsible: true
+        });
     },
     addCourseToCart: function () {
         var newCourse = {
@@ -24,9 +38,14 @@ var MyView = React.createClass({
     render: function () {
         var cartListing = this.state.courses.map(function (course) {
             return (
-                <div className="row">
-                    <div className="medium-offset-3 medium-5 columns">{course.courseCode} ({course.section})</div>
-                    <div className="medium-4 columns">{course.credits} cr</div>
+                <div>
+                    <h3>
+                        <div className="row">
+                            <div className="medium-offset-3 medium-5 columns">{course.courseCode} ({course.section})</div>
+                            <div className="medium-4 columns">{course.credits} cr</div>
+                        </div>
+                    </h3>
+                details
                 </div>
             )
         }.bind(this));
@@ -38,7 +57,8 @@ var MyView = React.createClass({
                         <div className="cart-header-title">My Cart</div>
                     </div>
                     <div>
-                        <button className="tiny">Register</button>&nbsp;
+                        <button className="tiny">Register</button>
+                    &nbsp;
                         <button className="tiny secondary">Clear</button>
                     </div>
                 </div>
@@ -61,7 +81,7 @@ var MyView = React.createClass({
                     </div>
                 </div>
 
-                <div className="cart-listing">
+                <div id="cartListing" className="cart-listing">
                     {cartListing}
                 </div>
             </div>

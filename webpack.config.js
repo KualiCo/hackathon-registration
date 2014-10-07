@@ -1,6 +1,8 @@
 /* jshint node:true */
 'use strict';
 
+var webpack = require("webpack");
+
 module.exports = {
     entry: './client/js/main.jsx',
     output: {
@@ -18,6 +20,12 @@ module.exports = {
     resolve: {
         extensions: ['', '.js', '.json', '.jsx', 'index.jsx', '.styl']
     },
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: "jquery"
+        })
+    ],
     devtool: "#source-map"
 };
 
