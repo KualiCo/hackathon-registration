@@ -8,6 +8,8 @@ var app = require('./app.jsx');
 var scheduleHome = require('./scheduleHome.jsx');
 var notFound = require('./notFound.jsx');
 
+var document = require('./document/link/docApp.jsx');
+
 var Route = Router.Route;
 var Routes = Router.Routes;
 var DefaultRoute = Router.DefaultRoute;
@@ -21,6 +23,7 @@ module.exports = (
       </Route>
       <Redirect path="/" to="/home" />
     </Route>
+    <Route name="doc" path="/doc" handler={document}/>
     <NotFoundRoute handler={notFound} />
   </Routes>
 );

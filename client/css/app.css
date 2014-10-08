@@ -194,3 +194,13 @@ input {
 .fi-play {
     padding-right: .3rem;
 }
+
+.docOverview {
+    background-color: #fff;
+    padding: 20px;
+}
+
+.docActions {
+    margin: 1rem;
+    text-align: center;
+}
